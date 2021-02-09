@@ -18,6 +18,7 @@ end = time.time()
 print(end - start)
 
 
+
 start = time.time()
 def SelectionSort(suckmydick):
     for i in range(len(suckmydick)-1):
