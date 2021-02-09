@@ -35,16 +35,6 @@ end = time.time()
 print(end - start)
 
 
-start = time.time()
-def MergeSort(suckmydick):
-    for i in range(len(suckmydick)-1):
-
-
-MergeSort(suckmydick)
-print(suckmydick)
-end = time.time()
-print(end - start)
-
 
 def SortData()
 
