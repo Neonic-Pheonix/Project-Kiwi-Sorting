@@ -12,8 +12,8 @@ def bubbleSort(arr):
                 arr[Y] = arr[Y+1]
                 arr[Y+1] = temp
     end = time.time()
-    print("Bubble ",arr)
-    print(end - start)
+    #print("Bubble ",arr)
+    print("Bubble ",end - start)
 #-------------------------------------------------------
 def SelectionSort(arr):
     start = time.time()
@@ -24,8 +24,8 @@ def SelectionSort(arr):
                 min_index = j
         arr[i], arr[min_index] = arr[min_index], arr[i]
     end = time.time()
-    print("Selection ",arr)
-    print(end - start)
+    #print("Selection ",arr)
+    print("Selection ",end - start)
 #-------------------------------------------------------
 def MergeSort(arr):
     if len(arr) > 1:
@@ -53,27 +53,26 @@ def MergeSort(arr):
             j += 1
             k += 1
 #-------------------------------------------------------
-def partition(arr, low, high):
-    i = (low-1)
-    pivot = arr[high]
-
-    for j in range(low, high):
-        if arr[j] <= pivot:
-            i = i+1
-            arr[i], arr[j] = arr[j], arr[i]
-    arr[i+1], arr[high] = arr[high], arr[i+1]
-    return (i+1)
-
-def QuickSort(arr, low, high):
-    if len(arr) == 1:
+def QS(arr):
+    L = []
+    E = []
+    G = []
+    if len(arr) > 1:
+        pivot = arr[0]
+        for x in arr:
+            if x < pivot:
+                L.append(x)
+            elif x == pivot:
+                E.append(x)
+            elif x > pivot:
+                G.append(x)
+        return QS(L)+E+QS(G)
+    else:
         return arr
-    if low < high:
-        pi = partition(arr, low, high)
-        QuickSort(arr, low, pi-1)
-        QuickSort(arr, pi+1, high)
+        
 
 #-------------------------------------------------------  
-
+'''
 bubbleSort(data)
 
 SelectionSort(data)
@@ -83,11 +82,10 @@ MergeSort(data)
 end = time.time()
 print("Merge ",data)
 print(end - start)
+'''
 
 start = time.time()
-arr = data
-n = len(arr)
-QuickSort(arr, 0, n-1)
+QS(data)
 end = time.time()
-print("Quick ",arr)
+print("Quick ",data)
 print(end - start)
